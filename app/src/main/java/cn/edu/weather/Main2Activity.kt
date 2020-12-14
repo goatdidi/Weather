@@ -39,6 +39,7 @@ class Main2Activity : AppCompatActivity() {
                 "阴"->imageView.setImageResource(R.drawable.cloud)
                 "多云"->imageView.setImageResource(R.drawable.mcloud)
                 "小雨"->imageView.setImageResource(R.drawable.rain)
+                "雷霆"->imageView.setImageResource(R.drawable.thunder)
                 "雪"->imageView.setImageResource(R.drawable.snow)
                 else ->imageView.setImageResource(R.drawable.thunder)
 
