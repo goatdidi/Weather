@@ -29,16 +29,16 @@ class MainActivity : AppCompatActivity() {
                 val adapter = ArrayAdapter<CityItem>(this, android.R.layout.simple_list_item_1, cities)
                 listView.adapter = adapter
                 searchView.queryHint = "查找"
-                searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
-                    override fun onQueryTextSubmit(p0: String?): Boolean {
-                        return false
-                    }
-                    override fun onQueryTextChange(p0: String?): Boolean {
-                        //通过首字符筛选内容
-                        adapter.filter.filter(p0)
-                        return false
-                    }
-                })
+//                searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+//                    override fun onQueryTextSubmit(p0: String?): Boolean {
+//                        return false
+//                    }
+//                    override fun onQueryTextChange(p0: String?): Boolean {
+//                        //通过首字符筛选内容
+//                        adapter.filter.filter(p0)
+//                        return false
+//                    }
+//                })
                 listView.setOnItemClickListener { _, _, i, l ->
                     val cityCode =cities[i].city_code
                     val intent=Intent(this, Main2Activity::class.java)
