@@ -1,10 +1,12 @@
 package cn.edu.weather
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.text.TextUtils
 import android.util.Log
 import android.widget.ArrayAdapter
+import android.widget.SearchView
+import androidx.appcompat.app.AppCompatActivity
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import kotlinx.android.synthetic.main.activity_main.*
@@ -26,12 +28,24 @@ class MainActivity : AppCompatActivity() {
             runOnUiThread {
                 val adapter = ArrayAdapter<CityItem>(this, android.R.layout.simple_list_item_1, cities)
                 listView.adapter = adapter
-                listView.setOnItemClickListener { _, _, i, _ ->
+                searchView.queryHint = "查找"
+                searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+                    override fun onQueryTextSubmit(p0: String?): Boolean {
+                        return false
+                    }
+                    override fun onQueryTextChange(p0: String?): Boolean {
+                        //通过首字符筛选内容
+                        adapter.filter.filter(p0)
+                        return false
+                    }
+                })
+                listView.setOnItemClickListener { _, _, i, l ->
                     val cityCode =cities[i].city_code
-                    val intent=Intent(this,Main2Activity::class.java)
-                    intent.putExtra("city_code",cityCode)
+                    val intent=Intent(this, Main2Activity::class.java)
+                    intent.putExtra("city_code", cityCode)
                     startActivity(intent)
                 }
+
             }
             Log.d("MainActivity", "$cities")
 

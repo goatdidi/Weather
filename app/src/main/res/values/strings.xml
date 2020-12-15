@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">2018110259张瑞迪</string>
+    <string name="chaxun">查询</string>
+    <string name="title_search_hint"/>
 </resources>
